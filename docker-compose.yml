@@ -1,5 +1,5 @@
 #
-# Ci-dessous la config qui permet de lancer politique-developpement-docker
+# Ci-dessous la config qui permet de déployer le site web de la politique informatique de l'Abes
 #
 # Remarque: avant de lancer docker-compose up, il faut régler le fichier .env
 # en partant du fichier .env-dist qui donne les variables d'environnements
@@ -8,35 +8,35 @@
 
 services:
 
-  politique-developpement:
-    image: abesesr/politique-developpement:${POLITIQUE_DEVELOPPEMENT_VERSION}
-    container_name: politique-developpement
+  abes-politique-informatique:
+    image: abesesr/abes-politique-informatique:${ABES_POLITIQUE_INFORMATIQUE_VERSION}
+    container_name: abes-politique-informatique
     restart: unless-stopped
     mem_limit: ${MEM_LIMIT}
     memswap_limit: ${MEM_LIMIT}
     cpus: ${CPU_LIMIT}
     environment:
-      POLITIQUE_DEVELOPPEMENT_HTTP_BASEURL: ${POLITIQUE_DEVELOPPEMENT_HTTP_BASEURL}
+      ABES_POLITIQUE_INFORMATIQUE_HTTP_BASEURL: ${ABES_POLITIQUE_INFORMATIQUE_HTTP_BASEURL}
     ports:
-      - ${POLITIQUE_DEVELOPPEMENT_HTTP_PORT}:80
+      - ${ABES_POLITIQUE_INFORMATIQUE_HTTP_PORT}:80
     labels:
       # pour envoyer les logs dans le puits de log de l'abes
       - "co.elastic.logs/enabled=true"
       - "co.elastic.logs/processors.add_fields.target="
-      - "co.elastic.logs/processors.add_fields.fields.abes_appli=poldev"
+      - "co.elastic.logs/processors.add_fields.fields.abes_appli=abes-politique-informatique"
       - "co.elastic.logs/processors.add_fields.fields.abes_middleware=nginx"
       # pour que les mises à jour de cette image soient auto-déployées par watchtower
-      - "com.centurylinklabs.watchtower.scope=politique-developpement-watchtower-scope"
+      - "com.centurylinklabs.watchtower.scope=abes-politique-informatique-watchtower-scope"
 
 
 
 
 
   #######################################
-  # politique-developpement-watchtower
-  politique-developpement-watchtower:
+  # abes-politique-informatique-watchtower
+  abes-politique-informatique-watchtower:
     image: containrrr/watchtower:1.4.0
-    container_name: politique-developpement-watchtower
+    container_name: abes-politique-informatique-watchtower
     restart: unless-stopped
     mem_limit: ${MEM_LIMIT}
     memswap_limit: ${MEM_LIMIT}
@@ -49,16 +49,16 @@ services:
       WATCHTOWER_DEBUG: "false"
       WATCHTOWER_NO_STARTUP_MESSAGE: "true"
       WATCHTOWER_WARN_ON_HEAD_FAILURE: "never"
-      WATCHTOWER_RUN_ONCE: ${POLITIQUE_DEVELOPPEMENT_WATCHTOWER_RUN_ONCE}
+      WATCHTOWER_RUN_ONCE: ${ABES_POLITIQUE_INFORMATIQUE_WATCHTOWER_RUN_ONCE}
       WATCHTOWER_NOTIFICATIONS: "slack"
-      WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL: ${POLITIQUE_DEVELOPPEMENT_WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL}
-      WATCHTOWER_NOTIFICATION_SLACK_IDENTIFIER: ${POLITIQUE_DEVELOPPEMENT_WATCHTOWER_NOTIFICATION_SLACK_IDENTIFIER}
-      WATCHTOWER_NOTIFICATION_SLACK_CHANNEL: "#notif-politique-developpement"
-      WATCHTOWER_SCOPE: "politique-developpement-watchtower-scope"
-      REPO_USER: ${POLITIQUE_DEVELOPPEMENT_WATCHTOWER_DOCKERHUB_USER}
-      REPO_PASS: ${POLITIQUE_DEVELOPPEMENT_WATCHTOWER_DOCKERHUB_PASS}
+      WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL: ${ABES_POLITIQUE_INFORMATIQUE_WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL}
+      WATCHTOWER_NOTIFICATION_SLACK_IDENTIFIER: ${ABES_POLITIQUE_INFORMATIQUE_WATCHTOWER_NOTIFICATION_SLACK_IDENTIFIER}
+      WATCHTOWER_NOTIFICATION_SLACK_CHANNEL: "#notif-polinfo"
+      WATCHTOWER_SCOPE: "abes-politique-informatique-watchtower-scope"
+      REPO_USER: ${ABES_POLITIQUE_INFORMATIQUE_WATCHTOWER_DOCKERHUB_USER}
+      REPO_PASS: ${ABES_POLITIQUE_INFORMATIQUE_WATCHTOWER_DOCKERHUB_PASS}
     labels:
-      - "com.centurylinklabs.watchtower.scope=politique-developpement-watchtower-scope"
+      - "com.centurylinklabs.watchtower.scope=abes-politique-informatique-watchtower-scope"
 
 
 
