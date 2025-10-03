@@ -1,6 +1,6 @@
 # politique-informatique-docker
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/abesesr/politique-developpement.svg)](https://hub.docker.com/r/abesesr/politique-developpement/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/abesesr/abes-politique-informatique.svg)](https://hub.docker.com/r/abesesr/abes-politique-informatique/)
 
 Configuration docker 🐳 pour déployer le site web https://politique-informatique.abes.fr  
 Le code source et le contenu du site est disponible ici : https://github.com/abes-esr/abes-politique-informatique
