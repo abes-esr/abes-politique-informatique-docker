@@ -10,17 +10,17 @@ Le code source et le contenu du site est disponible ici : https://github.com/abe
 Les URLs correspondantes aux déploiements en local, dev, test et prod sont les suivantes :
 
 - local :
-    - http://127.0.0.1:8940/
-    - http://127.0.0.1:3000/ (c'est l'URL par défaut lorsque l'on démarre docusaurus en mode développement)
+    - http://127.0.0.1:28940/
+    - http://127.0.0.1:3000/ (c'est l'URL par défaut lorsque l'on démarre docusaurus en mode développement avec ``npm start``)
 - dev (sous vpn) :
     - https://politique-informatique-dev.abes.fr
-    - http://diplotaxis6-dev.v212.abes.fr:8940/
+    - http://diplotaxis6-dev.v212.abes.fr:28940/
 - test (sous vpn) :
     - https://politique-informatique-test.abes.fr
-    - http://diplotaxis6-test.v202.abes.fr:8940/
+    - http://diplotaxis6-test.v202.abes.fr:28940/
 - prod
     - https://politique-informatique.abes.fr
-    - http://diplotaxis6-prod.v102.abes.fr:8940/
+    - http://diplotaxis6-prod.v102.abes.fr:28940/
 
 ## Prérequis
 
