@@ -35,7 +35,7 @@ services:
   #######################################
   # abes-politique-informatique-watchtower
   abes-politique-informatique-watchtower:
-    image: containrrr/watchtower:1.4.0
+    image: nickfedor/watchtower:1.13.1
     container_name: abes-politique-informatique-watchtower
     restart: unless-stopped
     mem_limit: ${MEM_LIMIT}
