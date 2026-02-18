@@ -57,8 +57,6 @@ services:
       WATCHTOWER_SCOPE: "abes-politique-informatique-watchtower-scope"
       REPO_USER: ${ABES_POLITIQUE_INFORMATIQUE_WATCHTOWER_DOCKERHUB_USER}
       REPO_PASS: ${ABES_POLITIQUE_INFORMATIQUE_WATCHTOWER_DOCKERHUB_PASS}
-    labels:
-      - "com.centurylinklabs.watchtower.scope=abes-politique-informatique-watchtower-scope"
 
 
 
